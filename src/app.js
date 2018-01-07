@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-const template = <p>test this is JSX</p>;
+import AsciiStore from './store/AsciiStore';
 
-ReactDOM.render(template, document.getElementById('root'))
+const reducer = () => ({ entities: { products: { all: {} } } });
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <AsciiStore />
+  </Provider>,
+  document.getElementById('root'),
+);
